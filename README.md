@@ -12,7 +12,7 @@ Classify whether a scheduled arrival at Blaise Diagne International Airport (AIB
 ## Data
 
 Official AIBD 2025 regular-arrivals ledger (10,863 flights). The data are governed and are NOT included in this repository.
-Citation: [FILL: data citation as used in the report, with access date].
+Citation: AIBD LAS (2025). Regular arrivals operational ledger, Blaise Diagne International Airport, January to December 2025. Operational records obtained by the author for academic research; not publicly available.
 
 Data access: the ledger is not public and is available only with the permission of the data owner (AIBD LAS). To rerun the notebook, obtain the file under that permission, save it as `data/aibd_2025_regular_arrivals.csv` and keep it out of version control (`data/` is git-ignored). Without the data, the saved outputs are visible in the notebook and in `results/`.
 

@@ -1,65 +1,73 @@
-# Arrival Delay Classification for Scheduled Flights at AIBD
+{\rtf1\ansi\ansicpg1252\cocoartf2709
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 
-Interdisciplinary Elective project, M.Sc. Data Science, University of Europe for Applied Sciences, Potsdam.
-Author: Mohameth Gueye. Module: Interdisciplinary Elective. Lecturer: Prof. Dr. Raja Hashim Ali.
-
-## Objective
-
-Classify whether a scheduled arrival at Blaise Diagne International Airport (AIBD) reaches its stand (BLOCK_ON) more than 15 minutes after its scheduled time (STA), using only information available before arrival. Three models are compared: a majority-class baseline, logistic regression, and histogram gradient boosting.
-
-## Data
-
-Official AIBD 2025 regular-arrivals ledger (10,863 flights). The data are governed and are NOT included in this repository.
-Citation: AIBD LAS (2025). Regular arrivals operational ledger, Blaise Diagne International Airport, January to December 2025. Operational records obtained by the author for academic research; not publicly available. Accessed September 1, 2026.
-
-Data access: the ledger is held by AIBD LAS and is not public. Access would need to be requested from AIBD LAS. To rerun the notebook, request the file from AIBD LAS, save it as `data/aibd_2025_regular_arrivals.csv` and keep it out of version control (`data/` is git-ignored). Without the data, the saved outputs are visible in the notebook and in `results/`.
-
-## Protocol
-
-- Label: delayed = BLOCK_ON minus STA greater than 15 minutes (41.6% of all flights).
-- Chronological split by scheduled month: January to October train, November validation, December held-out test.
-- Features (7, all known before arrival): airline, flight number, aircraft type, origin, scheduled hour, day of week, weekend flag. Actual times, delay codes, passenger and baggage counts, stand, belt, gate, and remarks are excluded to avoid leakage. A guard in the notebook enforces this.
-- Model selection on validation macro F1 (ROC AUC as tie-break) with small grids. Final models are refit on January to November and evaluated once on December. Fixed decision threshold of 0.5.
-- Uncertainty: day-cluster bootstrap (1,000 resamples over the 31 test days).
-
-## Repository structure
-
-```
-01_arrival_delay_classification.ipynb   full pipeline with saved outputs
-results/                                metrics, confidence intervals, error analysis, robustness, run_info.txt
-figures/                                confusion matrices, precision-recall curves
-requirements.txt
-data/                                   not tracked (governed data, see Data)
-```
-
-## Setup and run
-
-```
-python -m venv .venv
-source .venv/bin/activate          # Windows: .venv\Scripts\activate
-pip install -r requirements.txt
-jupyter lab                        # start from the project root
-```
-
-Open the notebook and choose Restart and Run All. Start Jupyter from the project root, because the notebook uses the relative paths `data/`, `results/` and `figures/`. Tested with Python 3.12.12 (exact versions in `results/run_info.txt`). Random seed: 42.
-
-## Results (December test, 967 flights, 54.1% delayed)
-
-| Model | Macro F1 (95% CI) | ROC AUC |
-|---|---|---|
-| Majority baseline | 0.315 | n/a |
-| Logistic regression | 0.668 (0.636 to 0.694) | 0.749 |
-| Gradient boosting | 0.644 (0.619 to 0.669) | 0.739 |
-
-Both models clearly beat the baseline. Logistic regression is slightly ahead on macro F1, while ROC AUC is practically tied. Details: `results/`.
-
-## Limitations
-
-- One test month; the delayed share shifts from 40.9% (train) and 35.5% (validation) to 54.1% (test), so precision and macro F1 are not comparable across months.
-- Fixed 0.5 threshold; a threshold sensitivity table is provided for diagnosis only.
-- Schedule-only features give moderate discrimination.
-- For the 118 rescheduled flights STA may not describe the plan that the airline actually followed, so their delays may be overstated or understated; excluding them changes results only marginally (`results/robustness_row_exclusions.csv`).
-- The 26 rows with remark "TEST" are kept in the main analysis; results are essentially unchanged without them (`results/robustness_row_exclusions.csv`).
-- The bootstrap reflects test-day sampling only, not training variability.
-- Airline names are anonymized in the saved tables.
-- Reviewers cannot rerun the pipeline without the ledger, and row-level predictions are not shared.
+\f0\fs24 \cf0 # Arrival Delay Classification for Scheduled Flights at AIBD\
+\
+Interdisciplinary Elective project, M.Sc. Data Science, University of Europe for Applied Sciences, Potsdam.\
+Author: Mohameth Gueye. Module: Interdisciplinary Elective. Lecturer: Prof. Dr. Raja Hashim Ali.\
+\
+## Objective\
+\
+Classify whether a scheduled arrival at Blaise Diagne International Airport (AIBD) reaches its stand (BLOCK_ON) more than 15 minutes after its scheduled time (STA), using only information available before arrival. Three models are compared: a majority-class baseline, logistic regression, and histogram gradient boosting.\
+\
+## Data\
+\
+Official AIBD 2025 regular-arrivals ledger (10,863 flights). The data are governed and are NOT included in this repository.\
+Citation: AIBD LAS (2025). Regular arrivals operational ledger, Blaise Diagne International Airport, January to December 2025. Operational records obtained by the author for academic research; not publicly available. Accessed September 1, 2026.\
+\
+Data access: the ledger is held by AIBD LAS and is not public. Access would need to be requested from AIBD LAS. To rerun the notebook, request the file from AIBD LAS, save it as `data/aibd_2025_regular_arrivals.csv` and keep it out of version control (`data/` is git-ignored). Without the data, the saved outputs are visible in the notebook and in `results/`.\
+\
+## Protocol\
+\
+- Label: delayed = BLOCK_ON minus STA greater than 15 minutes (41.6% of all flights).\
+- Chronological split by scheduled month: January to October train, November validation, December held-out test.\
+- Features (7, all known before arrival): airline, flight number, aircraft type, origin, scheduled hour, day of week, weekend flag. Actual times, delay codes, passenger and baggage counts, stand, belt, gate, and remarks are excluded to avoid leakage. A guard in the notebook enforces this.\
+- Model selection on validation macro F1 (ROC AUC as tie-break) with small grids. Final models are refit on January to November and evaluated once on December. Fixed decision threshold of 0.5.\
+- Uncertainty: day-cluster bootstrap (1,000 resamples over the 31 test days).\
+\
+## Repository structure\
+\
+```\
+01_arrival_delay_classification.ipynb   full pipeline with saved outputs\
+results/                                metrics, confidence intervals, error analysis, robustness, run_info.txt\
+figures/                                confusion matrices, precision-recall curves\
+requirements.txt\
+data/                                   not tracked (governed data, see Data)\
+```\
+\
+## Setup and run\
+\
+```\
+python -m venv .venv\
+source .venv/bin/activate          # Windows: .venv\\Scripts\\activate\
+pip install -r requirements.txt\
+jupyter lab                        # start from the project root\
+```\
+\
+Open the notebook and choose Restart and Run All. Start Jupyter from the project root, because the notebook uses the relative paths `data/`, `results/` and `figures/`. Tested with Python 3.12.12 (exact versions in `results/run_info.txt`). Random seed: 42.\
+\
+## Results (December test, 967 flights, 54.1% delayed)\
+\
+| Model | Macro F1 (95% CI) | ROC AUC |\
+|---|---|---|\
+| Majority baseline | 0.315 | n/a |\
+| Logistic regression | 0.668 (0.636 to 0.694) | 0.749 |\
+| Gradient boosting | 0.644 (0.619 to 0.669) | 0.739 |\
+\
+Both models clearly beat the baseline. Logistic regression is slightly ahead on macro F1, while ROC AUC is practically tied. Details: `results/`.\
+\
+## Limitations\
+\
+- One test month; the delayed share shifts from 40.9% (train) and 35.5% (validation) to 54.1% (test), so precision and macro F1 are not comparable across months.\
+- Fixed 0.5 threshold; a threshold sensitivity table is provided for diagnosis only.\
+- Schedule-only features give moderate discrimination.\
+- For the 118 rescheduled flights STA may not describe the plan that the airline actually followed, so their delays may be overstated or understated; excluding them changes results only marginally (`results/robustness_row_exclusions.csv`).\
+- The 26 rows with remark "TEST" are kept in the main analysis; results are essentially unchanged without them (`results/robustness_row_exclusions.csv`).\
+- The bootstrap reflects test-day sampling only, not training variability.\
+- Airline names are anonymized in the saved tables.\
+- Reviewers cannot rerun the pipeline without the ledger, and row-level predictions are not shared.\
+}

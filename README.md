@@ -58,7 +58,7 @@ Both models clearly beat the baseline. Logistic regression is slightly ahead on 
 - One test month; the delayed share shifts from 40.9% (train) and 35.5% (validation) to 54.1% (test), so precision and macro F1 are not comparable across months.
 - Fixed 0.5 threshold; a threshold sensitivity table is provided for diagnosis only.
 - Schedule-only features give moderate discrimination.
-- For the 118 rescheduled flights, STA may not describe the plan that the airline actually followed, so their delays may be overstated or understated; excluding them changes results only marginally (`results/robustness_row_exclusions.csv`).
+- For the 118 rescheduled flights it is not documented whether STA is the original or the updated schedule, so their delays may be overstated or understated; excluding them changes results only marginally (`results/robustness_row_exclusions.csv`).
 - The 26 rows with remark "TEST" are kept in the main analysis; results are essentially unchanged without them (`results/robustness_row_exclusions.csv`).
 - The bootstrap reflects test-day sampling only, not training variability.
 - Airline names are anonymized in the saved tables.

@@ -1,11 +1,11 @@
 # Arrival Delay Classification for Scheduled Flights at AIBD
 
 Interdisciplinary Elective project, M.Sc. Data Science, University of Europe for Applied Sciences, Potsdam.
-Author: [FILL: name exactly as shown on the Teams assignment]. Module: Interdisciplinary Elective. Lecturer: Prof. Dr. Raja Hashim Ali.
+Author: Mohameth Gueye. Module: Interdisciplinary Elective. Lecturer: Prof. Dr. Raja Hashim Ali.
 
 ## Objective
 
-Classify whether a scheduled arrival at Blaise Diagne International Airport (AIBD) reaches its stand (BLOCK_ON) more than 15 minutes after its scheduled time (STA), using only information available before arrival. Three models are compared: a majority-class baseline, logistic regression and histogram gradient boosting.
+Classify whether a scheduled arrival at Blaise Diagne International Airport (AIBD) reaches its stand (BLOCK_ON) more than 15 minutes after its scheduled time (STA), using only information available before arrival. Three models are compared: a majority-class baseline, logistic regression, and histogram gradient boosting.
 
 ## Data
 
@@ -18,7 +18,7 @@ Data access: the file is not public. To rerun the notebook, obtain the ledger fr
 
 - Label: delayed = BLOCK_ON minus STA greater than 15 minutes (41.6% of all flights).
 - Chronological split by scheduled month: January to October train, November validation, December held-out test.
-- Features (7, all known before arrival): airline, flight number, aircraft type, origin, scheduled hour, day of week, weekend flag. Actual times, delay codes, passenger and baggage counts, stand, belt, gate and remarks are excluded to avoid leakage. A guard in the notebook enforces this.
+- Features (7, all known before arrival): airline, flight number, aircraft type, origin, scheduled hour, day of week, weekend flag. Actual times, delay codes, passenger and baggage counts, stand, belt, gate, and remarks are excluded to avoid leakage. A guard in the notebook enforces this.
 - Model selection on validation macro F1 (ROC AUC as tie-break) with small grids. Final models are refit on January to November and evaluated once on December. Fixed decision threshold of 0.5.
 - Uncertainty: day-cluster bootstrap (1,000 resamples over the 31 test days).
 
@@ -63,4 +63,4 @@ Both models clearly beat the baseline. Logistic regression is slightly ahead on 
 
 ## AI-use statement
 
-The code was drafted with an AI assistant (Claude, Anthropic) in step-by-step form. The author selected the topic and design decisions, ran and checked every cell, interpreted the results and wrote the report. The report itself was written by the author. [FILL: align wording with the AI-use statement in the report.]
+The code was drafted with an AI assistant (Claude, Anthropic) in step-by-step form. The author selected the topic and design decisions, ran and checked every cell, interpreted the results, and wrote the report. The report itself was written by the author. [FILL: align wording with the AI-use statement in the report.]

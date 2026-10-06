@@ -1,0 +1,7 @@
+model,metric,estimate,ci_low,ci_high
+logistic regression,macro_f1,0.668,0.636,0.694
+logistic regression,roc_auc,0.749,0.722,0.776
+gradient boosting,macro_f1,0.644,0.619,0.669
+gradient boosting,roc_auc,0.739,0.711,0.767
+boosting minus logistic,macro_f1,-0.024,-0.042,-0.005
+boosting minus logistic,roc_auc,-0.009,-0.018,-0.0

@@ -1,0 +1,4 @@
+variant,fit_rows,test_rows,lr_macro_f1,lr_roc_auc,gb_macro_f1,gb_roc_auc
+all rows (reported above),9896,967,0.668,0.749,0.644,0.739
+without remark TEST,9870,967,0.669,0.749,0.646,0.742
+without TEST and rescheduled,9761,958,0.668,0.748,0.653,0.743

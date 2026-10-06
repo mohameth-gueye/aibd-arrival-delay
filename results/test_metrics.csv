@@ -1,0 +1,4 @@
+model,accuracy,macro_f1,f1_delayed,precision_delayed,recall_delayed,roc_auc,pr_auc
+majority class,0.4592,0.3147,0.0,0.0,0.0,0.5,0.5408
+logistic regression,0.668,0.6679,0.6617,0.7371,0.6004,0.7486,0.7841
+gradient boosting,0.6443,0.6437,0.6574,0.6861,0.631,0.7394,0.7731

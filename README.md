@@ -1,5 +1,3 @@
-cd ~/Desktop/aibd-arrival-delay-retake
-cat > README.md << 'EOF'
 # Arrival Delay Classification for Scheduled Flights at AIBD
 
 Interdisciplinary Elective project, M.Sc. Data Science, University of Europe for Applied Sciences, Potsdam.
@@ -12,9 +10,9 @@ Classify whether a scheduled arrival at Blaise Diagne International Airport (AIB
 ## Data
 
 Official AIBD 2025 regular-arrivals ledger (10,863 flights). The data are governed and are NOT included in this repository.
-Citation: AIBD LAS (2025). Regular arrivals operational ledger, Blaise Diagne International Airport, January to December 2025. Operational records obtained by the author for academic research; not publicly available.
+Citation: AIBD LAS (2025). Regular arrivals operational ledger, Blaise Diagne International Airport, January to December 2025. Operational records obtained by the author for academic research; not publicly available. Accessed September 1, 2026.
 
-Data access: the ledger is not public and is available only with the permission of the data owner (AIBD LAS). To rerun the notebook, obtain the file under that permission, save it as `data/aibd_2025_regular_arrivals.csv` and keep it out of version control (`data/` is git-ignored). Without the data, the saved outputs are visible in the notebook and in `results/`.
+Data access: the ledger is held by AIBD LAS and is not public. Access would need to be requested from AIBD LAS. To rerun the notebook, request the file from AIBD LAS, save it as `data/aibd_2025_regular_arrivals.csv` and keep it out of version control (`data/` is git-ignored). Without the data, the saved outputs are visible in the notebook and in `results/`.
 
 ## Protocol
 
@@ -60,11 +58,8 @@ Both models clearly beat the baseline. Logistic regression is slightly ahead on 
 - One test month; the delayed share shifts from 40.9% (train) and 35.5% (validation) to 54.1% (test), so precision and macro F1 are not comparable across months.
 - Fixed 0.5 threshold; a threshold sensitivity table is provided for diagnosis only.
 - Schedule-only features give moderate discrimination.
-- For the 118 rescheduled flights it is not documented whether STA is the original or the updated schedule, so their delays may be overstated if STA is the original; excluding them changes results only marginally (`results/robustness_row_exclusions.csv`).
+- For the 118 rescheduled flights STA may not describe the plan that the airline actually followed, so their delays may be overstated or understated; excluding them changes results only marginally (`results/robustness_row_exclusions.csv`).
 - The 26 rows with remark "TEST" are kept in the main analysis; results are essentially unchanged without them (`results/robustness_row_exclusions.csv`).
 - The bootstrap reflects test-day sampling only, not training variability.
 - Airline names are anonymized in the saved tables.
 - Reviewers cannot rerun the pipeline without the ledger, and row-level predictions are not shared.
-EOF
-file README.md
-head -5 README.md

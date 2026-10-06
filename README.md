@@ -1,6 +1,6 @@
 # Arrival Delay Classification for Scheduled Flights at AIBD
 
-Interdisciplinary Elective retake project, M.Sc. Data Science, University of Europe for Applied Sciences, Potsdam.
+Interdisciplinary Elective project, M.Sc. Data Science, University of Europe for Applied Sciences, Potsdam.
 Author: [FILL: name exactly as shown on the Teams assignment]. Module: Interdisciplinary Elective. Lecturer: Prof. Dr. Raja Hashim Ali.
 
 ## Objective
